@@ -55,16 +55,16 @@ const articleSchema = {
   keywords={post.data.tags.join(", ")}
 >
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} slot="head" />
-  <header class="py-15 flex items-center justify-between flex-col md:flex-row fixed top-0 left-1/2 -translate-x-1/2 bg-background z-40">
-    <div class="flex items-center gap-5 order-2 md:order-1">
+  <header class="py-4 flex items-center justify-between fixed top-0 left-1/2 -translate-x-1/2 z-50 w-full max-w-2xl px-5 transition-all duration-300 bg-background/70 backdrop-blur-xl border-b border-white/10">
+    <div class="flex items-center gap-5">
       <a
-        class="opacity-50 transition-all duration-200 hover:opacity-100 text-[1rem] md:text-[0.85rem]"
+        class="opacity-50 transition-all duration-200 hover:opacity-100 text-[0.85rem]"
         href="/blog"
       >
         ← Blog
       </a>
+      <span class="opacity-100 text-[0.85rem] font-bold text-green-500">Post</span>
     </div>
-    <div class="absolute -bottom-10 left-0 w-full h-18 pointer-events-none bg-linear-to-b from-background via-background/80 to-background/20 z-10"></div>
   </header>
 
   <main class="mt-32 pb-24">

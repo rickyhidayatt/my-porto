@@ -14,44 +14,127 @@ const { nav, locales, currentLocale } = Astro.props as Props
 
 ---
 
-<header class="py-15 flex items-center justify-between flex-col md:flex-row fixed top-0 left-1/2 -translate-x-1/2 bg-background z-40">
-    <div class="flex items-center gap-5 order-2 md:order-1">
+<!-- Header wrapper: state controlled via JS adding 'menu-open' class -->
+<header id="site-header" class="py-5 flex items-center justify-between fixed top-0 left-1/2 -translate-x-1/2 z-[100] w-full max-w-2xl px-8 transition-all duration-300 bg-background/70 backdrop-blur-xl border-b border-white/10 shadow-sm">
+
+            <!-- Brand (Mobile Only) -->
+            <span class="md:hidden font-bold text-sm tracking-tighter text-green-500">RH.</span>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-5">
+                {
+                    nav.map((item) => {
+                        const href = currentLocale === "en" 
+                            ? (item.path === "/" ? "/" : `/${item.path}`)
+                            : `/${currentLocale}${item.path === "/" ? "" : item.path}`;
+                        return (
+                            <I18NDebug key={item.text}>
+                                <a class="opacity-50 hover:opacity-100 transition-all text-[0.85rem]" href={href}>{item.text}</a>
+                            </I18NDebug>
+                        )
+                    })
+                }
+                <a class="opacity-50 hover:opacity-100 transition-all text-[0.85rem]" href="/blog">blog</a>
+            </nav>
+
+        <!-- Desktop Locale -->
+        <div class="hidden md:flex items-center gap-2 text-[0.9rem]">
+            {locales.map(item => {
+                const href = item.toLowerCase() === "en" ? "/" : `/${item.toLowerCase()}`;
+                return (
+                <a href={href} class={cls("hover:opacity-100 opacity-60 transition-all uppercase text-xs tracking-widest", item === currentLocale && "opacity-100 text-green-500")}>
+                        {item}
+                    </a>
+                )
+            })}
+        </div>
+
+        <!-- Hamburger Button (Mobile) -->
+    <button id="menu-btn" aria-label="Menu" class="md:hidden flex flex-col justify-center gap-[5px] w-8 h-8 z-50">
+        <div id="bar1" class="w-5 h-[1.5px] bg-current transition-all duration-300 origin-center"></div>
+        <div id="bar2" class="w-5 h-[1.5px] bg-current transition-all duration-300"></div>
+        <div id="bar3" class="w-5 h-[1.5px] bg-current transition-all duration-300 origin-center"></div>
+        </button>
+</header>
+
+<!-- Mobile Dropdown Menu (Glass) -->
+<div
+    id="nav-dropdown"
+    class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl px-8 pt-24 pb-8 z-40
+           bg-background/60 backdrop-blur-2xl border border-white/10 rounded-b-2xl
+           -translate-y-full opacity-0 transition-all duration-300 ease-in-out
+           md:hidden"
+>
+    <nav class="flex flex-col gap-2">
         {
             nav.map((item) => {
                 const href = currentLocale === "en" 
                     ? (item.path === "/" ? "/" : `/${item.path}`)
                     : `/${currentLocale}${item.path === "/" ? "" : item.path}`;
                 return (
-                    <I18NDebug key={item.text}>
-                        <a
-                            class="opacity-50 transition-all duration-200 hover:opacity-100 text-[1rem] md:text-[0.85rem]"
-                            href={href}
-                        >
-                            {item.text}
-                        </a>
-                    </I18NDebug>
+                    <a class="nav-link py-3 text-sm opacity-60 hover:opacity-100 border-b border-white/5 transition-all" href={href}>{item.text}</a>
                 )
             })
         }
-        <a
-            class="opacity-50 transition-all duration-200 hover:opacity-100 text-[1rem] md:text-[0.85rem]"
-            href="/blog"
-        >
-            blog
-        </a>
+        <a class="nav-link py-3 text-sm opacity-60 hover:opacity-100 border-b border-white/5 transition-all" href="/blog">blog</a>
+    </nav>
+
+    <!-- Locale switcher -->
+    <div class="flex gap-3 mt-5 pt-4">
+        {locales.map(l => (
+            <a href={l === "en" ? "/" : `/${l}`}
+               class={cls("nav-link text-xs uppercase tracking-widest px-2 py-1 border transition-all",
+                   l === currentLocale
+                       ? "border-green-500 text-green-500"
+                       : "border-white/10 opacity-40 hover:opacity-70"
+               )}>
+                {l}
+            </a>
+        ))}
     </div>
-    <div class="order-1 md:order-2 mb-4 md:mb-0 space-x-2 md:space-x-0" >
-        {
-            locales.map(item => {
-                const href = item.toLowerCase() === "en" ? "/" : `/${item.toLowerCase()}`;
-                return (
-                    <a href={href} class={cls("uppercase text-[1.2rem] md:text-[0.9rem] hover:opacity-100 cursor-pointer opacity-70 transition-all duration-200", item === currentLocale.toLowerCase() && "opacity-100")}>
-                        {item}
-                    </a>
-                    <span class="last:hidden opacity-50 text-[1.2rem] md:text-[0.9rem]">/</span>
-                )
-            })
-        }
-    </div>
-    <div class="absolute -bottom-10 left-0 w-full h-18  pointer-events-none bg-linear-to-b from-background via-background/80 to-background/20 z-10"></div>
-</header>
+</div>
+
+<script>
+    const init = () => {
+        const btn = document.getElementById('menu-btn');
+        const dropdown = document.getElementById('nav-dropdown');
+        const header = document.getElementById('site-header');
+        const bar1 = document.getElementById('bar1');
+        const bar2 = document.getElementById('bar2');
+        const bar3 = document.getElementById('bar3');
+        const navLinks = dropdown?.querySelectorAll('.nav-link');
+
+        if (!btn || !dropdown || !header) return;
+
+        let isOpen = false;
+
+        const openMenu = () => {
+            isOpen = true;
+            dropdown.classList.remove('-translate-y-full', 'opacity-0');
+            dropdown.classList.add('translate-y-0', 'opacity-100');
+            bar1?.classList.add('rotate-45', 'translate-y-[6.5px]');
+            bar2?.classList.add('opacity-0', 'scale-x-0');
+            bar3?.classList.add('-rotate-45', '-translate-y-[6.5px]');
+            document.body.style.overflow = 'hidden';
+        };
+
+        const closeMenu = () => {
+            isOpen = false;
+            dropdown.classList.add('-translate-y-full', 'opacity-0');
+            dropdown.classList.remove('translate-y-0', 'opacity-100');
+            bar1?.classList.remove('rotate-45', 'translate-y-[6.5px]');
+            bar2?.classList.remove('opacity-0', 'scale-x-0');
+            bar3?.classList.remove('-rotate-45', '-translate-y-[6.5px]');
+            document.body.style.overflow = 'auto';
+        };
+
+        btn.onclick = () => isOpen ? closeMenu() : openMenu();
+
+        // Close on link click
+        navLinks?.forEach(link => { link.addEventListener('click', closeMenu); });
+    };
+
+    init();
+    document.addEventListener('astro:after-swap', init);
+</script>
+
