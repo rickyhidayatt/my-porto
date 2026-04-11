@@ -15,6 +15,7 @@ import Projects from "@/src/components/Projects.astro";
 import Experience from "@/src/components/Experience.astro";
 import Footer from "@/src/components/Footer.astro";
 import Skills from "@/src/components/Skills.astro";
+import enJson from "@/i18n/en.json";
 
 const { t, locale } = useI18n<LocaleSchema>({
   ssg: {
@@ -131,6 +132,8 @@ const experienceData = {
 
 const alternate = [
   { href: "/en", hreflang: "en" },
+  { href: "/id", hreflang: "id" },
+  { href: "/en", hreflang: "x-default" },
 ];
 
 const footerContent = {
@@ -173,37 +176,24 @@ const footerContent = {
   },
 };
 
-const skills = [
-  {
-    title: { key: "skills.golang.title", value: t("skills.golang.title") },
-    category: { key: "skills.golang.category", value: t("skills.golang.category") },
-    description: { key: "skills.golang.description", value: t("skills.golang.description") },
-    experience_years: { key: "skills.golang.experience_years", value: t("skills.golang.experience_years") },
-    experience_label: { key: "skills.golang.experience_label", value: t("skills.golang.experience_label") },
-  },
-  {
-    title: { key: "skills.typescript.title", value: t("skills.typescript.title") },
-    category: { key: "skills.typescript.category", value: t("skills.typescript.category") },
-    description: { key: "skills.typescript.description", value: t("skills.typescript.description") },
-    experience_years: { key: "skills.typescript.experience_years", value: t("skills.typescript.experience_years") },
-    experience_label: { key: "skills.typescript.experience_label", value: t("skills.typescript.experience_label") },
-  },
-  {
-    title: { key: "skills.net.title", value: t("skills.net.title") },
-    category: { key: "skills.net.category", value: t("skills.net.category") },
-    description: { key: "skills.net.description", value: t("skills.net.description") },
-    experience_years: { key: "skills.net.experience_years", value: t("skills.net.experience_years") },
-    experience_label: { key: "skills.net.experience_label", value: t("skills.net.experience_label") },
-  }
-];
+// Otomatis generate dari JSON — cukup tambah skill baru di en.json / id.json
+const skillKeys = Object.keys(enJson.skills).filter((k) => k !== "heading");
+const skills = skillKeys.map((skillKey) => ({
+  title: { key: `skills.${skillKey}.title`, value: t(`skills.${skillKey}.title` as any) },
+  category: { key: `skills.${skillKey}.category`, value: t(`skills.${skillKey}.category` as any) },
+  description: { key: `skills.${skillKey}.description`, value: t(`skills.${skillKey}.description` as any) },
+  experience_years: { key: `skills.${skillKey}.experience_years`, value: t(`skills.${skillKey}.experience_years` as any) },
+  experience_label: { key: `skills.${skillKey}.experience_label`, value: t(`skills.${skillKey}.experience_label` as any) },
+}));
 
 ---
 
 <Layout
   locale={locale}
-  title="Ricky Hidayat - Software Engginer"
+  title="Ricky Hidayat — Backend & Golang Developer"
   description={t("description")}
   alternateLinks={alternate}
+  keywords="Backend Developer, Golang Developer, Go, Microservices, gRPC, REST API, PostgreSQL, Docker, Ricky Hidayat"
 >
   <Header nav={nav} locales={["en", "id"]} currentLocale={locale} />
 

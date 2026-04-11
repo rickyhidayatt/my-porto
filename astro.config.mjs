@@ -7,11 +7,23 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://example.com/",
+  site: "https://rickyhidayat.com",
 
   vite: {
     plugins: [tailwindcss()]
   },
 
-  integrations: [sitemap()]
+  integrations: [
+    sitemap({
+      i18n: {
+        defaultLocale: "en",
+        locales: {
+          en: "en-US",
+          id: "id-ID",
+        },
+      },
+      changefreq: "weekly",
+      priority: 0.9,
+    }),
+  ],
 });

@@ -6,7 +6,7 @@
 
 :root {
   --background: oklch(98.8% 0.006 290);
-  --foreground: oklch(17% 0.018 285);
+  --foreground: oklch(34.8% 0.2312 265.481);
 
   --primary: oklch(50% 0.17 270);
   --primary-foreground: oklch(98.5% 0.004 270);
@@ -31,7 +31,7 @@
 }
 
 .dark {
-  --background: oklch(14% 0.012 285);
+  --background: oklch(13.065% 0.00332 325.556);
   --foreground: oklch(96% 0.01 285);
 
   --primary: oklch(64% 0.18 270);

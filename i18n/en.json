@@ -1,5 +1,5 @@
 {
-  "description": "Backend Developer building performant web applications and developer tools. Currently crafting interfaces at Vercel",
+  "description": "Backend Developer building performant web applications and developer tools.",
   "nav": {
     "about": "about",
     "projects": "projects",
@@ -10,26 +10,25 @@
 
   "hero": {
     "title": "Backend / Golang Developer",
-    "p1": "I am a Backend Developer with 2.5+ years of experience building scalable, high-concurrency systems in Go—specifically for core banking and fintech.",
+    "p1": "I am a Backend Developer based in Indonesia 🇮🇩 with 2.5+ years of experience building scalable, high-concurrency systems in Go—specifically for core banking and fintech.",
     "p2": "I specialize in Microservices, gRPC, and Observability stacks. I focus on engineering reliable API architectures, seamless database migrations, and high-performance system monitoring.",
-    "p3": ""
+    "p3": "Open for freelance and remote opportunities worldwide — feel free to reach out!"
   },
-
   "projects": {
-    "title": "Projects",
+   "title": "Projects",
     "item_1": {
-      "name": "KPI Management system",
-      "description": "On Progress || Fullstack Project ",
+      "name": "KPI Management System",
+      "description": "Fullstack application for managing and tracking KPIs, currently in development.",
       "link": "https://github.com/#"
     },
     "item_2": {
       "name": "Image Resizer Converter",
-      "description": "This Go program allows you to resize images and convert them to WebP and AVIF formats. It leverages the ImageMagick library for image manipulation.",
+      "description": "A Go-based tool for resizing images and converting them to WebP and AVIF formats using ImageMagick.",
       "link": "https://github.com/rickyhidayatt/image-resize-converter"
     },
     "item_3": {
       "name": "Ranata Studio",
-      "description": "Web Apps Booking Design Interior & Exterior using wordpress custom php.",
+      "description": "Interior and exterior design booking web application built with WordPress and custom PHP.",
       "link": "https://ranatastudio.com/"
     }
   },
@@ -39,47 +38,82 @@
       "period": "01/2025 — now",
       "role": "Backend Developer",
       "company": "Ihsan Solusi",
-      "description": "Developed high-performance microservices (gRPC, GraphQL, REST) for Bank Jabar Banten Syariah and PT POS Indonesia using Go and Python"
+      "description": "Developed microservices (gRPC, GraphQL, REST) for banking systems using Go and Python."
     },
     "item_2": {
       "period": "11/2024 — 01/2025",
       "role": "Backend Developer",
-      "company": "Aka Tech Vison",
-      "description": "Shipped real-time sync, keyboard-first interactions, and performance optimizations."
+      "company": "Aka Tech Vision",
+      "description": "Built WMS for financial transactions (mutual funds & bonds) using Go microservices, including REST APIs and core banking integration."
     },
     "item_3": { 
       "period": "06/2023 — 11/2024",
       "role": "Backend Developer",
-      "company": "Adi Data Informataka",
-      "description": "Designed payment flows and merchant dashboards. Led the migration to React 18 and improved CI/CD pipelines."
+      "company": "Adi Data Informatika",
+      "description": "Developed APIs, authentication (JWT, OAuth), media services, and handled system integration & data migration in banking projects."
     }
   },
   "skills": {
     "heading": "Skills",
     "golang": {
       "title": "Golang",
-      "category": "Language",
-      "description": "Static Typing, Generics, Interfaces",
+      "category": "Programming Language",
+      "description": "Microservices, Concurrency (goroutines), REST, gRPC",
       "experience_years": "2.5+",
       "experience_label": "years of experience"
     },
-    "typescript": {
-      "title": "TypeScript",
-      "category": "Language",
-      "description": "Static Typing, Generics, Interfaces",
-      "experience_years": "1",
+    "csharp": {
+      "title": "C#",
+      "category": "Programming Language",
+      "description": ".NET Core 8, Web API development",
+      "experience_years": "1+",
       "experience_label": "years of experience"
     },
-    "net": {
-      "title": "ASP .NET",
-      "category": "Framework",
-      "description": "Framework C#",
-      "experience_years": "1",
+    "javascript": {
+      "title": "JavaScript",
+      "category": "Programming Language",
+      "description": "Node.js, Express.js",
+      "experience_years": "1+",
+      "experience_label": "years of experience"
+    },
+    "python": {
+      "title": "Python",
+      "category": "Programming Language",
+      "description": "Scripting, backend services",
+      "experience_years": "1+",
+      "experience_label": "years of experience"
+    },
+    "frameworks": {
+      "title": "Frameworks",
+      "category": "Backend Framework",
+      "description": "Chi, Echo, Gin, Gorm, Express.js, .NET Core",
+      "experience_years": "2+",
+      "experience_label": "years of experience"
+    },
+    "api": {
+      "title": "API Technologies",
+      "category": "Backend",
+      "description": "gRPC, RESTful API, GraphQL",
+      "experience_years": "2+",
+      "experience_label": "years of experience"
+    },
+    "database": {
+      "title": "Database & Caching",
+      "category": "Database",
+      "description": "PostgreSQL, Oracle, Redis",
+      "experience_years": "2+",
+      "experience_label": "years of experience"
+    },
+    "tools": {
+      "title": "Tools & DevOps",
+      "category": "Tools",
+      "description": "Docker, Git, OpenShift (OCP), Jira, Grafana",
+      "experience_years": "2+",
       "experience_label": "years of experience"
     }
   },
   "contact": {
-    "status": "Available for freelance",
+    "status": "Available for freelance opportunities. Feel free to reach out here",
     "email_label": "Email",
     "email_url": "rickyhytt@gmail.com",
     "github_label": "GitHub",
