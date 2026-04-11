@@ -1,11 +1,4 @@
 ---
-export const getStaticPaths = () => {
-  return [
-    { params: { lang: "en" } },
-    { params: { lang: "id" } },
-  ];
-};
-
 import Layout from "@/src/layouts/Layout.astro";
 import { useI18n } from "@ariaskit/astro-i18n";
 import { type LocaleSchema } from "@/src/types";
@@ -131,9 +124,9 @@ const experienceData = {
 };
 
 const alternate = [
-  { href: "/en", hreflang: "en" },
+  { href: "/", hreflang: "en" },
   { href: "/id", hreflang: "id" },
-  { href: "/en", hreflang: "x-default" },
+  { href: "/", hreflang: "x-default" },
 ];
 
 const footerContent = {
@@ -176,7 +169,6 @@ const footerContent = {
   },
 };
 
-// Otomatis generate dari JSON — cukup tambah skill baru di en.json / id.json
 const skillKeys = Object.keys(enJson.skills).filter((k) => k !== "heading");
 const skills = skillKeys.map((skillKey) => ({
   title: { key: `skills.${skillKey}.title`, value: t(`skills.${skillKey}.title` as any) },
