@@ -1,3 +1,200 @@
 ---
-return Astro.redirect('/en');
+import Layout from "@/src/layouts/Layout.astro";
+import { useI18n } from "@ariaskit/astro-i18n";
+import { type LocaleSchema } from "@/src/types";
+import Header from "@/src/components/Header.astro";
+import Hero from "@/src/components/Hero.astro";
+import Projects from "@/src/components/Projects.astro";
+import Experience from "@/src/components/Experience.astro";
+import Footer from "@/src/components/Footer.astro";
+import Skills from "@/src/components/Skills.astro";
+import enJson from "@/i18n/en.json";
+
+const { t, locale } = useI18n<LocaleSchema>({
+  ssg: {
+    astro: Astro,
+  },
+});
+
+const nav = [
+  { path: `/`, text: t("nav.about") },
+  { path: `#${t("nav.experience")}`, text: t("nav.experience") },
+  { path: `#${t("nav.projects")}`, text: t("nav.projects") },
+  { path: `#${t("nav.contact")}`, text: t("nav.contact") },
+];
+
+const heroProps = {
+  name: "Ricky Hidayat",
+  title: { key: "hero.title", value: t("hero.title") },
+  p1: { key: "hero.p1", value: t("hero.p1") },
+  p2: { key: "hero.p2", value: t("hero.p2") },
+  p3: { key: "hero.p3", value: t("hero.p3") },
+};
+
+const projects = [
+  {
+    nameKey: "projects.item_1.name",
+    descriptionKey: "projects.item_1.description",
+    name: t("projects.item_1.name"),
+    description: t("projects.item_1.description"),
+    link: t("projects.item_1.link"),
+  },
+  {
+    nameKey: "projects.item_2.name",
+    descriptionKey: "projects.item_2.description",
+    name: t("projects.item_2.name"),
+    description: t("projects.item_2.description"),
+    link: t("projects.item_2.link"),
+  },
+  {
+    nameKey: "projects.item_3.name",
+    descriptionKey: "projects.item_3.description",
+    name: t("projects.item_3.name"),
+    description: t("projects.item_3.description"),
+    link: t("projects.item_3.link"),
+  }
+];
+
+const projectsProps = {
+  title: { key: "projects.title", value: t("projects.title") },
+  projects,
+};
+
+const experienceData = {
+  title: {
+    key: "experience.title",
+    value: t("experience.title"),
+  },
+  jobs: [
+    {
+      period: {
+        key: "experience.item_1.period",
+        value: t("experience.item_1.period"),
+      },
+      role: {
+        key: "experience.item_1.role",
+        value: t("experience.item_1.role"),
+      },
+      company: {
+        key: "experience.item_1.company",
+        value: t("experience.item_1.company"),
+      },
+      description: {
+        key: "experience.item_1.description",
+        value: t("experience.item_1.description"),
+      },
+    },
+    {
+      period: {
+        key: "experience.item_2.period",
+        value: t("experience.item_2.period"),
+      },
+      role: {
+        key: "experience.item_2.role",
+        value: t("experience.item_2.role"),
+      },
+      company: {
+        key: "experience.item_2.company",
+        value: t("experience.item_2.company"),
+      },
+      description: {
+        key: "experience.item_2.description",
+        value: t("experience.item_2.description"),
+      },
+    },
+    {
+      period: {
+        key: "experience.item_3.period",
+        value: t("experience.item_3.period"),
+      },
+      role: {
+        key: "experience.item_3.role",
+        value: t("experience.item_3.role"),
+      },
+      company: {
+        key: "experience.item_3.company",
+        value: t("experience.item_3.company"),
+      },
+      description: {
+        key: "experience.item_3.description",
+        value: t("experience.item_3.description"),
+      },
+    },
+  ],
+};
+
+const alternate = [
+  { href: "/", hreflang: "en" },
+  { href: "/id", hreflang: "id" },
+  { href: "/", hreflang: "x-default" },
+];
+
+const footerContent = {
+  id: t("nav.contact").toLowerCase(),
+  status: {
+    key: "contact.status",
+    value: t("contact.status"),
+  },
+  email_label: {
+    key: "contact.email_label",
+    value: t("contact.email_label"),
+  },
+  email_url: {
+    key: "contact.email_url",
+    value: t("contact.email_url"),
+  },
+  github_label: {
+    key: "contact.github_label",
+    value: t("contact.github_label"),
+  },
+  github_url: {
+    key: "contact.github_url",
+    value: t("contact.github_url"),
+  },
+  x_label: {
+    key: "contact.x_label",
+    value: t("contact.x_label"),
+  },
+  x_url: {
+    key: "contact.x_url",
+    value: t("contact.x_url"),
+  },
+  linkedin_label: {
+    key: "contact.linkedin_label",
+    value: t("contact.linkedin_label"),
+  },
+  linkedin_url: {
+    key: "contact.linkedin_url",
+    value: t("contact.linkedin_url"),
+  },
+};
+
+const skillKeys = Object.keys(enJson.skills).filter((k) => k !== "heading");
+const skills = skillKeys.map((skillKey) => ({
+  title: { key: `skills.${skillKey}.title`, value: t(`skills.${skillKey}.title` as any) },
+  category: { key: `skills.${skillKey}.category`, value: t(`skills.${skillKey}.category` as any) },
+  description: { key: `skills.${skillKey}.description`, value: t(`skills.${skillKey}.description` as any) },
+  experience_years: { key: `skills.${skillKey}.experience_years`, value: t(`skills.${skillKey}.experience_years` as any) },
+  experience_label: { key: `skills.${skillKey}.experience_label`, value: t(`skills.${skillKey}.experience_label` as any) },
+}));
+
 ---
+
+<Layout
+  locale={locale}
+  title="Ricky Hidayat — Backend & Golang Developer"
+  description={t("description")}
+  alternateLinks={alternate}
+  keywords="Backend Developer, Golang Developer, Go, Microservices, gRPC, REST API, PostgreSQL, Docker, Ricky Hidayat"
+>
+  <Header nav={nav} locales={["en", "id"]} currentLocale={locale} />
+
+  <main>
+    <Hero {...heroProps} />
+    <Experience {...experienceData} />
+    <Skills heading={{key: "skills.heading", value: t("skills.heading")}} content={skills} />
+    <Projects {...projectsProps} />
+  </main>
+
+  <Footer {...footerContent} />
+</Layout>
