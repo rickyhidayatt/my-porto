@@ -2,8 +2,7 @@
 export const getStaticPaths = () => {
   return [
     { params: { lang: "en" } },
-    { params: { lang: "es" } },
-    { params: { lang: "pt" } },
+    { params: { lang: "id" } },
   ];
 };
 
@@ -206,7 +205,7 @@ const skills = [
   description={t("description")}
   alternateLinks={alternate}
 >
-  <Header nav={nav} locales={["en", "es", "pt"]} currentLocale={locale} />
+  <Header nav={nav} locales={["en", "id"]} currentLocale={locale} />
 
   <main>
     <Hero {...heroProps} />

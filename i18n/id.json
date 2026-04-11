@@ -1,22 +1,22 @@
 {
-  "description": "Backend Developer building performant web applications and developer tools. Currently crafting interfaces at Vercel",
+  "description": "Backend Developer yang berfokus pada microservices, core banking",
   "nav": {
-    "about": "about",
-    "projects": "projects",
-    "experience": "experience",
-    "contact": "contact",
+    "about": "tentang",
+    "projects": "projek",
+    "experience": "pengalaman",
+    "contact": "kontak",
     "blog":"blog"
   },
 
   "hero": {
     "title": "Backend / Golang Developer",
-    "p1": "I am a Backend Developer with 2.5+ years of experience building scalable, high-concurrency systems in Go—specifically for core banking and fintech.",
-    "p2": "I specialize in Microservices, gRPC, and Observability stacks. I focus on engineering reliable API architectures, seamless database migrations, and high-performance system monitoring.",
+    "p1": "Hai saya seorang Backend Developer dengan total 2,5 tahun pengalaman dalam membuat service yang stabil dengan menggunakan Golang terutama untuk sistem core banking dan fintech.",
+    "p2": "Saya terbiasa membuat service secara microservices, gRPC, dan belajar hal baru. Saya fokus pada pembuatan API Arsitektur, database, dan monitoring.",
     "p3": ""
   },
 
   "projects": {
-    "title": "Projects",
+    "title": "Projek",
     "item_1": {
       "name": "KPI Management system",
       "description": "On Progress || Fullstack Project ",
